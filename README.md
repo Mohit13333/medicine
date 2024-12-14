@@ -3,7 +3,8 @@
 # website link:-https://medicine-remainder.netlify.app
 
 # This is a Medicine Reminder Website that allows users to efficiently manage their medicine schedules and logs.
-The application provides both patient and admin functionalities.
+
+# The application provides both patient and admin functionalities.
 
 # Features
 
