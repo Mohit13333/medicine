@@ -57,9 +57,7 @@
 
 * cd folder name
 
-* Install dependencies: Ensure you have npm installed, then run:
-
-* npm install
+* Install dependencies using:- npm install
 
 * Run the development server: Start the frontend server using:- npm run dev
 
@@ -73,9 +71,7 @@
 
 * cd folder name
 
-* Install dependencies: Ensure you have npm installed, then run:
-
-* npm install
+* Install dependencies using:- npm install
 
 * Run the server: You can start the backend server using one of the following commands:- npm run dev
 
