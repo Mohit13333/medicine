@@ -33,13 +33,9 @@ The application provides both patient and admin functionalities.
 
 4 Admin Functionalities
 
-# Filtered Logs
-
 * View logs filtered by user ID or date range.
 
 * Manage and analyze logs for better oversight.
-
-# Medicine Overview
 
 * Access and manage medicine schedules across users.
 
