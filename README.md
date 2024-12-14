@@ -43,7 +43,7 @@ The application provides both patient and admin functionalities.
 
 * Access and manage medicine schedules across users.
 
-5 Additional Features:-
+* Additional Features:-
 
 * Secure Authentication: Users are authenticated using JWT for enhanced security.
 
