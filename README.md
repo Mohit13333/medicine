@@ -1,8 +1,8 @@
-Medicine Reminder 
+# Medicine Reminder 
 
-website link:-https://medicine-remainder.netlify.app
+# website link:-https://medicine-remainder.netlify.app
 
-This is a Medicine Reminder Website that allows users to efficiently manage their medicine schedules and logs.
+# This is a Medicine Reminder Website that allows users to efficiently manage their medicine schedules and logs.
 The application provides both patient and admin functionalities.
 
 # Features
@@ -11,11 +11,11 @@ The application provides both patient and admin functionalities.
 
 * Medicine Management
 
-Add new medicines with details such as name, dosage, and scheduled time.
+* Add new medicines with details such as name, dosage, and scheduled time.
 
-View a structured list of all medicines.
+* View a structured list of all medicines.
 
-Edit or delete medicines as needed.
+* Edit or delete medicines as needed.
 
 2 Log Management
 
@@ -49,49 +49,47 @@ Edit or delete medicines as needed.
 
 * Responsive Design: The application is accessible across devices.
 
-How to Run the Project.
+# How to Run the Project.
 
-This project is divided into two parts: the Frontend and the Backend. Follow the instructions below to run both:
+* This project is divided into two parts: the Frontend and the Backend. Follow the instructions below to run both:
 
 1. Frontend Setup
-The frontend of this project is built using React. To run the frontend locally:
+* The frontend of this project is built using React. To run the frontend locally:
 
-Navigate to the frontend directory:
+* Navigate to the frontend directory:
 
-cd folder name
+* cd folder name
 
-Install dependencies: Ensure you have npm installed, then run:
+* Install dependencies: Ensure you have npm installed, then run:
 
-npm install
+* npm install
 
-Run the development server: Start the frontend server using:
+* Run the development server: Start the frontend server using:
 
-npm run dev
+* npm run dev
 
-Access the application: Open your browser and go to http://localhost:5173 (or the port specified in the console).
+* Access the application: Open your browser and go to http://localhost:5173 (or the port specified in the console).
 
 2. Backend Setup
    
-The backend of this project is built using Node.js with Express. To run the backend locally:
+* The backend of this project is built using Node.js with Express. To run the backend locally:
 
-Navigate to the backend directory:
+* Navigate to the backend directory:
 
-cd folder name
+* cd folder name
 
-Install dependencies: Ensure you have npm installed, then run:
+* Install dependencies: Ensure you have npm installed, then run:
 
-npm install
+* npm install
 
-Run the server: You can start the backend server using one of the following commands:
+* Run the server: You can start the backend server using one of the following commands:
 
-Using npm:
+* Using npm:
 
-npm run dev
+* npm run dev
 
-Or directly with Node.js:
+* Or directly with Node.js:- node server.js
 
-node server.js
+* Verify the server is running: The server will be running on the specified port (e.g., http://localhost:8080 ,or the port specified in the console).
 
-Verify the server is running: The server will be running on the specified port (e.g., http://localhost:8080 ,or the port specified in the console).
-
-Notes:you need .env file setup to run frontend and backend both.
+# Notes:you need .env file setup to run frontend and backend both.
