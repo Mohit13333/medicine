@@ -6,6 +6,7 @@ This is a Medicine Reminder Website that allows users to efficiently manage thei
 The application provides both patient and admin functionalities.
 
 Features
+
 Patient Functionalities
 
 Medicine Management
@@ -13,27 +14,41 @@ Medicine Management
 Add new medicines with details such as name, dosage, and scheduled time.
 View a structured list of all medicines.
 Edit or delete medicines as needed.
+
 Log Management
 
 Add logs for completed medicines.
+
 Mark medicines as taken when consumed or missed .
+
 Edit or delete existing logs.
+
 User Authentication
 
 Register and log in securely using JWT-based authentication.
+
 Manage personal medicine schedules and logs.
+
 Admin Functionalities
-Filtered Logs
+
+1 Filtered Logs
 
 View logs filtered by user ID or date range.
+
 Manage and analyze logs for better oversight.
-Medicine Overview
+
+2 Medicine Overview
 
 Access and manage medicine schedules across users.
-Additional Features
+
+Additional Features:-
+
 Secure Authentication: Users are authenticated using JWT for enhanced security.
+
 Responsive Design: The application is accessible across devices.
-How to Run the Project
+
+How to Run the Project.
+
 This project is divided into two parts: the Frontend and the Backend. Follow the instructions below to run both:
 
 1. Frontend Setup
