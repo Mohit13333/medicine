@@ -19,7 +19,7 @@ const Register = () => {
       const response = await registerUser({ name, email, password });
       localStorage.setItem("token", response.data.accessToken);
       dispatch(setUser(response.data.user));
-      navigate("/medicine-schedule");
+      navigate("/");
     } catch (error) {
       // console.error("Registration failed:", error);
       setError("Registration failed. Please try again.");
