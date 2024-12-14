@@ -25,6 +25,9 @@ export const createMedicine = async (medicineData) => {
 export const getMedicines = async () => {
   return await api.get("/medicine/get");
 };
+export const getMedicineById = async (id) => {
+  return await api.get(`/medicine/get/${id}`);
+};
 export const updateMedicine = async (id, updatedMedicine) => {
   return await api.put(`/medicine/update/${id}`, updatedMedicine);
 };

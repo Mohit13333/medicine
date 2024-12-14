@@ -7,10 +7,12 @@ import {
 } from "../services/api";
 import { setLogs } from "../slices/logSlice";
 import Navbar from "./NavBar";
+import { setLoading } from "../slices/globalSlice";
 
 const AdminDashboard = () => {
   const dispatch = useDispatch();
   const logs = useSelector((state) => state.logs.acknowledgmentLogs);
+  const loading = useSelector((state) => state.global.loading);
   const [filter, setFilter] = useState({
     userId: "",
     startDate: "",
@@ -22,11 +24,14 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const fetchLogs = async () => {
+      dispatch(setLoading(true));
       try {
         const response = await getAcknowledgmentLogs();
         dispatch(setLogs(response.data));
       } catch (error) {
         setError("Failed to fetch logs");
+      } finally {
+        dispatch(setLoading(false));
       }
     };
 
@@ -34,11 +39,14 @@ const AdminDashboard = () => {
   }, [dispatch]);
 
   const fetchUsers = async () => {
+    dispatch(setLoading(true));
     try {
       const response = await getAllUsers();
       setUsers(response.data.users);
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      dispatch(setLoading(false));
     }
   };
 
@@ -58,7 +66,7 @@ const AdminDashboard = () => {
       dispatch(setLogs(response.data));
       if (response.data.length === 0) {
         setError("Logs not found");
-        setSuccess(""); 
+        setSuccess("");
       } else {
         setError("");
         setSuccess("Logs filtered successfully.");
@@ -70,36 +78,64 @@ const AdminDashboard = () => {
       showTemporaryMessage(setError);
     }
   };
-  
-
+  if (loading) {
+    return (
+      <section className="flex flex-col items-center justify-center h-screen">
+        <div className="w-[100px] h-[100px] border-8 border-t-8 border-r-blue-500 border-t-green-500 border-l-rose-500 border-solid rounded-full animate-spin"></div>
+        <p className="text-md m-2 text-black">
+          Establishing connection, please wait...
+        </p>
+      </section>
+    );
+  }
   return (
     <>
       <Navbar />
       <div className="p-4 mt-14 bg-gray-100 min-h-screen">
-        <h2 className="text-2xl font-bold mb-4">Users medicine log (for admin)</h2>
+        <h2 className="text-2xl font-bold mb-4">
+          Users medicine log (for admin)
+        </h2>
         {error && <div className="text-red-500 mb-4">{error}</div>}
         {success && <div className="text-green-500 mb-4">{success}</div>}
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-300">
             <thead>
               <tr>
-                <th className="border border-gray-300 p-2 text-sm">User Name</th>
+                <th className="border border-gray-300 p-2 text-sm">
+                  User Name
+                </th>
                 <th className="border border-gray-300 p-2 text-sm">Email</th>
-                <th className="border border-gray-300 p-2 text-sm">Medicine Name</th>
+                <th className="border border-gray-300 p-2 text-sm">
+                  Medicine Name
+                </th>
                 <th className="border border-gray-300 p-2 text-sm">Dosage</th>
                 <th className="border border-gray-300 p-2 text-sm">Status</th>
-                <th className="border border-gray-300 p-2 text-sm">Timestamp</th>
+                <th className="border border-gray-300 p-2 text-sm">
+                  Timestamp
+                </th>
               </tr>
             </thead>
             <tbody>
               {logs.map((log) => (
                 <tr key={log._id}>
-                  <td className="border border-gray-300 p-2 text-sm">{log.userId.name}</td>
-                  <td className="border border-gray-300 p-2 text-sm">{log.userId?.email}</td>
-                  <td className="border border-gray-300 p-2 text-sm">{log?.medicineId?.name}</td>
-                  <td className="border border-gray-300 p-2 text-sm">{log?.medicineId?.dosage}</td>
-                  <td className="border border-gray-300 p-2 text-sm">{log.status}</td>
-                  <td className="border border-gray-300 p-2 text-sm">{new Date(log.timestamp).toLocaleString("en-GB")}</td>
+                  <td className="border border-gray-300 p-2 text-sm">
+                    {log.userId.name}
+                  </td>
+                  <td className="border border-gray-300 p-2 text-sm">
+                    {log.userId?.email}
+                  </td>
+                  <td className="border border-gray-300 p-2 text-sm">
+                    {log?.medicineId?.name}
+                  </td>
+                  <td className="border border-gray-300 p-2 text-sm">
+                    {log?.medicineId?.dosage}
+                  </td>
+                  <td className="border border-gray-300 p-2 text-sm">
+                    {log.status}
+                  </td>
+                  <td className="border border-gray-300 p-2 text-sm">
+                    {new Date(log.timestamp).toLocaleString("en-GB")}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -129,13 +165,17 @@ const AdminDashboard = () => {
             <input
               type="date"
               value={filter.startDate}
-              onChange={(e) => setFilter({ ...filter, startDate: e.target.value })}
+              onChange={(e) =>
+                setFilter({ ...filter, startDate: e.target.value })
+              }
               className="border rounded py-2 px-3 w-full"
             />
             <input
               type="date"
               value={filter.endDate}
-              onChange={(e) => setFilter({ ...filter, endDate: e.target.value })}
+              onChange={(e) =>
+                setFilter({ ...filter, endDate: e.target.value })
+              }
               className="border rounded py-2 px-3 w-full"
             />
           </div>

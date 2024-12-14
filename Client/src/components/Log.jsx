@@ -11,10 +11,12 @@ import {
   getMedicines,
 } from "../services/api";
 import Navbar from "./NavBar";
+import { setLoading } from "../slices/globalSlice";
 
 const Log = () => {
   const dispatch = useDispatch();
   const logs = useSelector((state) => state.logs.acknowledgmentLogs);
+  const loading = useSelector((state) => state.global.loading);
   const [status, setStatus] = useState("");
   const [selectedLog, setSelectedLog] = useState(null);
   const [selectedUser, setSelectedUser] = useState("");
@@ -26,15 +28,19 @@ const Log = () => {
 
   useEffect(() => {
     const fetchLogs = async () => {
+      dispatch(setLoading(true));
       try {
         const response = await getAcknowledgmentLogs();
         dispatch(setLogs(response.data));
       } catch (error) {
         setError("Failed to fetch logs. Please try again.");
+      } finally {
+        dispatch(setLoading(false));
       }
     };
 
     const fetchUsers = async () => {
+      dispatch(setLoading(true));
       try {
         const userId = localStorage.getItem("userId");
         const response = await getUser(userId);
@@ -42,15 +48,20 @@ const Log = () => {
         setSelectedUser(response.data._id);
       } catch (error) {
         setError("Failed to fetch users. Please try again.");
+      } finally {
+        dispatch(setLoading(false));
       }
     };
 
     const fetchMedicines = async () => {
+      dispatch(setLoading(true));
       try {
         const response = await getMedicines();
         setMedicines(response.data);
       } catch (error) {
         setError("Failed to fetch medicines. Please try again.");
+      } finally {
+        dispatch(setLoading(false));
       }
     };
 
@@ -110,6 +121,8 @@ const Log = () => {
     } catch (error) {
       setError("Failed to update log. Please try again.");
       showTemporaryMessage(setError);
+    } finally {
+      dispatch(setLoading(false));
     }
   };
 
@@ -139,7 +152,16 @@ const Log = () => {
       showTemporaryMessage(setError);
     }
   };
-
+  if (loading) {
+    return (
+      <section className="flex flex-col items-center justify-center h-screen">
+        <div className="w-[100px] h-[100px] border-8 border-t-8 border-r-blue-500 border-t-green-500 border-l-rose-500 border-solid rounded-full animate-spin"></div>
+        <p className="text-md m-2 text-black">
+          Establishing connection, please wait...
+        </p>
+      </section>
+    );
+  }
   return (
     <>
       <Navbar />

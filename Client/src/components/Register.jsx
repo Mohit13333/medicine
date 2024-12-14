@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { registerUser } from "../services/api";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import { setLoading } from "../slices/globalSlice";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const loading = useSelector((state) => state.global.loading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    dispatch(setLoading(true));
     setError("");
 
     try {
@@ -22,9 +25,20 @@ const Register = () => {
     } catch (error) {
       // console.error("Registration failed:", error);
       setError("Registration failed. Please try again.");
+    } finally {
+      dispatch(setLoading(false));
     }
   };
-
+  if (loading) {
+    return (
+      <section className="flex flex-col items-center justify-center h-screen">
+        <div className="w-[100px] h-[100px] border-8 border-t-8 border-r-blue-500 border-t-green-500 border-l-rose-500 border-solid rounded-full animate-spin"></div>
+        <p className="text-md m-2 text-black">
+          Establishing connection, please wait...
+        </p>
+      </section>
+    );
+  }
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
       <form

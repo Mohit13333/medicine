@@ -19,7 +19,6 @@ const Navbar = () => {
       setUsers({ role: response.data.role }); 
     } catch (error) {
       // console.error("Error fetching users:", error);
-      setError("Failed to fetch users. Please try again.");
     }
   };
   useEffect(() => {

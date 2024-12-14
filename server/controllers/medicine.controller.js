@@ -23,6 +23,19 @@ export const getMedicines = async (req, res) => {
   }
 };
 
+export const getMedicineById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const medicine = await Medicine.findById(id);
+    if (!medicine) {
+      return res.status(404).json({ message: "Medicine not found" });
+    }
+    res.status(200).json(medicine);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 export const updateMedicine = async (req, res) => {
   const { id } = req.params;
   try {
@@ -40,7 +53,7 @@ export const updateMedicine = async (req, res) => {
     const updatedMedicine = await Medicine.findByIdAndUpdate(id, req.body, {
       new: true,
     });
-    res.status(200).json({
+    return res.status(200).json({
       message: "Medicine updated successfully",
       medicine: updatedMedicine,
     });
@@ -64,6 +77,7 @@ export const deleteMedicine = async (req, res) => {
     }
 
     await Medicine.findByIdAndDelete(id);
+    return res.status(200).json({ message: "Medicine successfully deleted" });
   } catch (error) {
     // console.log(error);
     res.status(500).json({ error: error });

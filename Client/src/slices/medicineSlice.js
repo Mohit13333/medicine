@@ -12,19 +12,19 @@ const medicineSlice = createSlice({
     addMedicine: (state, action) => {
       state.medicines.push(action.payload);
     },
-    updateMedicineInStore: (state, action) => {
-      const index = state.medicines.findIndex(
-        (medicine) => medicine._id === action.payload._id
-      );
-      if (index !== -1) {
-        state.medicines[index] = action.payload;
-      }
-    },
-    removeMedicine: (state, action) => {
-      state.medicines = state.medicines.filter(
-        (medicine) => medicine._id !== action.payload
-      );
-    },
+    // updateMedicineInStore: (state, action) => {
+    //   const index = state.medicines.findIndex(
+    //     (medicine) => medicine._id === action.payload._id
+    //   );
+    //   if (index !== -1) {
+    //     state.medicines[index] = action.payload;
+    //   }
+    // },
+    // removeMedicine: (state, action) => {
+    //   state.medicines = state.medicines.filter(
+    //     (medicine) => medicine._id !== action.payload
+    //   );
+    // },
   },
 });
 
