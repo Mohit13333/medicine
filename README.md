@@ -12,7 +12,9 @@ Patient Functionalities
 Medicine Management
 
 Add new medicines with details such as name, dosage, and scheduled time.
+
 View a structured list of all medicines.
+
 Edit or delete medicines as needed.
 
 Log Management
