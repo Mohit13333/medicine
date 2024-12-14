@@ -60,9 +60,7 @@ The application provides both patient and admin functionalities.
 
 * npm install
 
-* Run the development server: Start the frontend server using:
-
-* npm run dev
+* Run the development server: Start the frontend server using:- npm run dev
 
 * Access the application: Open your browser and go to http://localhost:5173 (or the port specified in the console).
 
@@ -78,14 +76,10 @@ The application provides both patient and admin functionalities.
 
 * npm install
 
-* Run the server: You can start the backend server using one of the following commands:
-
-* Using npm:
-
-* npm run dev
+* Run the server: You can start the backend server using one of the following commands:- npm run dev
 
 * Or directly with Node.js:- node server.js
 
 * Verify the server is running: The server will be running on the specified port (e.g., http://localhost:8080 ,or the port specified in the console).
 
-# Notes:you need .env file setup to run frontend and backend both.
+# Notes:- you need .env file setup to run frontend and backend both.
